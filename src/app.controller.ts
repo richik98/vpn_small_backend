@@ -41,9 +41,9 @@ export class AppController {
       console.log('profile has been recreated');
       // Step 4: Read new profile config
       const configPath = `/root/${newProfileName}.ovpn`;
-      const { stdout: configFile } = await execAsync(`cat ${configPath}`);
+      const { stdout: newConfigFile } = await execAsync(`cat ${configPath}`);
 
-      return { success: true, newProfileName, configFile };
+      return { success: true, newProfileName, newConfigFile };
     } catch (error) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
       return { success: false, message: error.message };
